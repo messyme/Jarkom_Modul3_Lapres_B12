@@ -5,7 +5,7 @@
 
 
 ## Daftar Isi
-### DHCP
+### Dynamic Host Configuration Protocol (DHCP)
   1. [Nomor 1](#1)
   2. [Nomor 2](#2)
   3. [Nomor 3](#3)
@@ -26,8 +26,43 @@
 ## SOAL NO 1
 ### membuat topologi jaringan demi kelancaran TA-nya dengan kriteria sebagai berikut:
 ![testestes](/Screenshot/soal1.jpg)
-
+- Buat topologi.sh yang berisi seperti gambar:
 ![testestes](/Screenshot/1-1.png)
+- Mengatur interface untuk masing-masing UML pada router ```SURABAYA``` melakukan setting sysctl dengan perintah ```nano /etc/sysctl.conf```. 
+- Uncommand pada ```net.ipv4.ip_forward=1``` atau hilangkan tanda pagar ```#```
+- Aktifkan perubahan menggunakan perintah ```sysctl -p```
+- Setting IP setiap UML dengan perintah ```nano /etc/network/interfaces```
+SURABAYA (Sebagai Router / DHCP Relay)
+```
+```
+MALANG (Sebagai DNS Server)
+```
+```
+MOJOKERTO (Sebagai Proxy Server)
+```
+```
+TUBAN (Sebagai DHCP Server)
+```
+```
+GRESIK
+```
+```
+SIDOARJO
+```
+```
+BANYUWANGI
+```
+```
+MADIUN
+```
+```
+- Restart network dengan perintah ```service networking restart```
+- Lakukan export proxy pada setiap UML dengan perintah ```source proxy.sh```
+```
+export http_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
+export https_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
+export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
+```
 </br></br></br>
 
 
