@@ -101,10 +101,10 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 
 - Pada UML **SIDOARJO** buka ```nano /etc/network/interfaces``` untuk mengonfigurasi interface SIDOARJO.
 - Lalu tambahkan 
-```
-auto eth0
-iface eth0 inet dhcp
-```
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  ```
   ![testestes](/Screenshot/3-2.png)
 
 - Lakukan perintah ```service networking restart``` untuk merestart network
@@ -131,6 +131,11 @@ iface eth0 inet dhcp
 <a name="5"></a>
 ## SOAL NO 5
 ### Client mendapatkan DNS Malang dan DNS 202.46.129.2 dari DHCP
+- - Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
+- Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file tambahkan ```option domain-name-servers 10.151.83.106, 202.46.129.2```
+![testestes](/Screenshot/4-1.png)
+
+- Periksa pada UML **SIDOARJO** apakah DNS server sudah sesuai konfigurasi dengan menggunakan perintah ```cat /etc/resolv.conf```
 ![testestes](/Screenshot/5-1.png)
 </br></br></br>
 
@@ -138,7 +143,24 @@ iface eth0 inet dhcp
 <a name="6"></a>
 ## SOAL NO 6
 ### Client di subnet 1 mendapatkan peminjaman alamat IP selama 5 menit, sedangkan client pada subnet 3 mendapatkan peminjaman IP selama 10 menit.
+- Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
+- Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file dan tambahkan:
+  - pada subnet 1
+      ```
+      default-lease-time 300;
+      max-lease-time 300;
+      ```
+  - pada subnet 3
+      ```
+      default-lease-time 600;
+      max-lease-time 600;
+      ```
+![testestes](/Screenshot/4-1.png)
+
+- Pada UML **SIDOARJO** lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/6-1.png)
+
+- Pada UML **BANYUWANGI** lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/6-2.png)
 </br></br></br>
 
