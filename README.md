@@ -86,7 +86,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 
 - Pada UML **TUBAN** buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf```
 - Tambahkan script seperti:</br>
-![testestes](revisi-3.png)
+  ![testestes](/Screenshot/revisi-3.png)
 
 - Restart service dengan perintah ```service isc-dhcp-server restart```
 </br></br></br>
@@ -261,8 +261,8 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 - Download file error page dengan perintah ```wget 10.151.36.202/ERR_ACCESS_DENIED``` pada direktori ```/usr/share/squid/errors/en``` maka akan tersimpan di ***ERR_ACCESS_DENIED.1*** 
 - Hapus file ***ERR_ACCESS_DENIED*** yang ada dengan perintah ```rm ERR_ACCESS_DENIED```
 - Menggunakan perintah ```mv ERR_ACCESS_DENIED.1 ERR_ACCESS_DENIED``` untuk memindahkan file page error ke ***ERR_ACCESS_DENIED***
-- Lakukan restart squid3 dengan perintah ```service squid3 restart```
-![testestes](/Screenshot/11-1.png)
+- Lakukan restart squid3 dengan perintah ```service squid3 restart```</br>
+  ![testestes](/Screenshot/11-1.png)
 
 - Akses ```its.ac.id``` maka hasilnya: 
 ![testestes](/Screenshot/11-2.png)
