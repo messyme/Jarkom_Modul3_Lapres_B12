@@ -26,8 +26,10 @@
 ## SOAL NO 1
 ### membuat topologi jaringan demi kelancaran TA-nya dengan kriteria sebagai berikut:
 ![testestes](/Screenshot/soal1.jpg)
+
 - Buat topologi.sh yang berisi seperti gambar:
 ![testestes](/Screenshot/1-1.png)
+
 - Mengatur interface untuk masing-masing UML pada router ```SURABAYA``` melakukan setting sysctl dengan perintah ```nano /etc/sysctl.conf```. 
 - Uncommand pada ```net.ipv4.ip_forward=1``` atau hilangkan tanda pagar ```#```
 - Aktifkan perubahan menggunakan perintah ```sysctl -p```
@@ -67,24 +69,45 @@ export https_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ```
 -->
+- Menggunakan perintah ```apt-get update``` untuk update setiap UML
 </br></br></br>
 
 
 <a name="2"></a>
 ## SOAL NO 2
 ### SURABAYA ditunjuk sebagai perantara (DHCP Relay) antara DHCP Server dan client
+- Jalankan perintah ```apt-get install isc-dhcp-server``` pada UML **TUBAN**
+- Buka file konfigurasi interface ```nano /etc/default/isc-dhcp-server``` untuk menentukan interface.
 ![testestes](/Screenshot/2-1.png)
+
+- Jalankan perintah ```apt-get install isc-dhcp-relay``` pada UML **SURABAYA**
 ![testestes](/Screenshot/2-2.png)
 ![testestes](/Screenshot/2-3.png)
+
+- Pada UML **TUBAN** buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf```
+- Tambahkan script seperti:
 ![testestes](/Screenshot/2-4.png)
+
+- Restart service dengan perintah ```service isc-dhcp-server restart```
 </br></br></br>
 
 
 <a name="3"></a>
 ## SOAL NO 3
 ### Client pada subnet 1 mendapatkan range IP dari 192.168.0.10 sampai 192.168.0.100 dan 192.168.0.110 sampai 192.168.0.200.
+- Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
+- Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file menjedi seperti:
 ![testestes](/Screenshot/3-1.png)
+
+- Pada UML **SIDOARJO** buka ```nano /etc/network/interfaces``` untuk mengonfigurasi interface SIDOARJO.
+- Lalu tambahkan 
+```
+auto eth0
+iface eth0 inet dhcp
+```
 ![testestes](/Screenshot/3-2.png)
+
+- Lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/3-3.png)
 </br></br></br>
 
