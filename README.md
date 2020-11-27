@@ -85,7 +85,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ![testestes](/Screenshot/2-3.png)
 
 - Pada UML **TUBAN** buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf```
-- Tambahkan script seperti:
+- Tambahkan script seperti:</br>
 ![testestes](/Screenshot/2-4.png)
 
 - Restart service dengan perintah ```service isc-dhcp-server restart```
@@ -105,7 +105,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 auto eth0
 iface eth0 inet dhcp
 ```
-![testestes](/Screenshot/3-2.png)
+  ![testestes](/Screenshot/3-2.png)
 
 - Lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/3-3.png)
@@ -115,8 +115,15 @@ iface eth0 inet dhcp
 <a name="4"></a>
 ## SOAL NO 4
 ### Client pada subnet 3 mendapatkan range IP dari 192.168.1.50 sampai 192.168.1.70.
+- Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
+- Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file menjedi seperti:
 ![testestes](/Screenshot/4-1.png)
+
+- Pada UML **BANYUWANGI** buka ```nano /etc/network/interfaces``` untuk mengonfigurasi interface BANYUWANGI.
 ![testestes](/Screenshot/4-2.png)
+
+
+- Lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/4-3.png)
 </br></br></br>
 
