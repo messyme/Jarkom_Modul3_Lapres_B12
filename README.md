@@ -261,7 +261,18 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 <a name="12"></a>
 ## SOAL NO 12
 ### Karena Bu Meguri dan Anri adalah tipe orang pelupa, maka untuk memudahkan mereka, Anri memiliki ide ketika menggunakan proxy cukup dengan mengetikkan domain janganlupa-ta.b12.pw dan memasukkan port 8080. 
+- Lakukan setting DNS Server pada UML **MALANG** dengan instalasi ```apt-get install bind9 -y```
+- Edit file konfigurasi dengan perintah ```nano /etc/bind/named.conf.local``` seperti gambar:
 ![testestes](/Screenshot/12-1.png)
+
+- Buat folder **_jarkom_** dengan perintah ```mkdir /etc/bind/jarkom```
+- Copy file _db.local_ dengan perintah ```cp /etc/bind/db.local /etc/bind/jarkom/janganlupa-ta.b12.pw```
+- Buka file tersebut dan edit dengan perintah ```nano /etc/bind/jarkom/janganlupa-ta.b12.pw```
+- Edit seperti:
 ![testestes](/Screenshot/12-2.png)
+
+- Menggunakan perintah ```service bind9 restart``` untuk merestart.
+
+- Atur proxy browser pada device dengan IP Address ```janganlupa-ta.b12.pw``` dan port ```8080```
 ![testestes](/Screenshot/12-3.png)
 </br></br></br>
