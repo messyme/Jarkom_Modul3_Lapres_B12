@@ -201,21 +201,21 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 <a name="8"></a>
 ## SOAL NO 8
 ### Anri sudah menjadwal pengerjaan TA-nya, setiap hari Selasa-Rabu pukul 13.00-18.00. Bu Meguri membatasi penggunaan internet Anri hanya pada jadwal yang telah ditentukan itu saja. Maka diluar jam tersebut, Anri tidak dapat mengakses jaringan internet dengan proxy tersebut. Jadwal bimbingan dengan Bu Meguri adalah
-![testestes](/Screenshot/7-1.png)
+![testestes](/Screenshot/8-1.png)
 </br></br></br>
 
 
 <a name="9"></a>
 ## SOAL NO 9
 ###  setiap hari Selasa-Kamis pukul 21.00 - 09.00 keesokan harinya (sampai Jumat jam 09.00). Agar Anri bisa fokus mengerjakan TA, 
-![testestes](/Screenshot/7-1.png)
+![testestes](/Screenshot/9-1.png)
 </br></br></br>
 
 
 <a name="10"></a>
 ## SOAL NO 10
 ###  setiap dia mengakses google.com, maka akan di redirect menuju monta.if.its.ac.id agar Anri selalu ingat untuk mengerjakan TA🙂
-![testestes](/Screenshot/7-1.png)
+![testestes](/Screenshot/10-1.png)
 </br></br></br>
 
 
