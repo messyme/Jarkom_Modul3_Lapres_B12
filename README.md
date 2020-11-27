@@ -268,8 +268,8 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 - Buat folder **_jarkom_** dengan perintah ```mkdir /etc/bind/jarkom```
 - Copy file _db.local_ dengan perintah ```cp /etc/bind/db.local /etc/bind/jarkom/janganlupa-ta.b12.pw```
 - Buka file tersebut dan edit dengan perintah ```nano /etc/bind/jarkom/janganlupa-ta.b12.pw```
-- Edit seperti:
-![testestes](/Screenshot/12-2.png)
+- Edit seperti: </br>
+  ![testestes](/Screenshot/12-2.png)
 
 - Menggunakan perintah ```service bind9 restart``` untuk merestart.
 
