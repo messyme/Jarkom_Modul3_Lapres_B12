@@ -223,9 +223,9 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
   
   http_access allow USERS WAKTU_TA
   http_access allow USERS WAKTU_BIMBINGAN_1
-  http_access allow WAKTU_BIMBINGAN_2
+  http_access allow USERS WAKTU_BIMBINGAN_2
   ```
-  ![testestes](/Screenshot/10-1.png)
+  ![testestes](/Screenshot/9-0.jpg)
 </br></br></br>
 
 
