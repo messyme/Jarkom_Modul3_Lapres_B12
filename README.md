@@ -86,7 +86,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 
 - Pada UML **TUBAN** buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf```
 - Tambahkan script seperti:</br>
-![testestes](/Screenshot/2-4.png)
+![testestes](revisi-3.png)
 
 - Restart service dengan perintah ```service isc-dhcp-server restart```
 </br></br></br>
@@ -97,7 +97,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ### Client pada subnet 1 mendapatkan range IP dari 192.168.0.10 sampai 192.168.0.100 dan 192.168.0.110 sampai 192.168.0.200.
 - Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
 - Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file menjedi seperti:
-![testestes](/Screenshot/3-1.png)
+![testestes](/Screenshot/revisi-1.png)
 
 - Pada UML **SIDOARJO** buka ```nano /etc/network/interfaces``` untuk mengonfigurasi interface SIDOARJO.
 - Lalu tambahkan 
@@ -117,7 +117,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ### Client pada subnet 3 mendapatkan range IP dari 192.168.1.50 sampai 192.168.1.70.
 - Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
 - Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file menjedi seperti:
-![testestes](/Screenshot/4-1.png)
+![testestes](/Screenshot/revisi-2.png)
 
 - Pada UML **BANYUWANGI** buka ```nano /etc/network/interfaces``` untuk mengonfigurasi interface BANYUWANGI.
 ![testestes](/Screenshot/4-2.png)
@@ -133,7 +133,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ### Client mendapatkan DNS Malang dan DNS 202.46.129.2 dari DHCP
 - Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
 - Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file tambahkan ```option domain-name-servers 10.151.83.106, 202.46.129.2```</br>
-  ![testestes](/Screenshot/4-1.png)
+  ![testestes](/Screenshot/revisi-2.png)
 
 - Periksa pada UML **SIDOARJO** apakah DNS server sudah sesuai konfigurasi dengan menggunakan perintah ```cat /etc/resolv.conf```</br>
 ![testestes](/Screenshot/5-1.png)
@@ -155,7 +155,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
       default-lease-time 600;
       max-lease-time 600;
       ```
-  ![testestes](/Screenshot/4-1.png)
+  ![testestes](/Screenshot/revisi-2.png)
 
 - Pada UML **SIDOARJO** lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/6-1.png)
@@ -208,6 +208,8 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
   http_access allow WAKTU_TA
   ```
   ![testestes](/Screenshot/9-1.png)
+ 
+- Lakukan restart squid3 dengan perintah ```service squid3 restart```
 </br></br></br>
 
 
@@ -226,6 +228,8 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
   http_access allow USERS WAKTU_BIMBINGAN_2
   ```
   ![testestes](/Screenshot/9-0.jpg)
+ 
+- Lakukan restart squid3 dengan perintah ```service squid3 restart```
 </br></br></br>
 
 
@@ -244,6 +248,8 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
   http_access allow deny all
   ```
   ![testestes](/Screenshot/8-1.png)
+
+- Lakukan restart squid3 dengan perintah ```service squid3 restart```
 </br></br></br>
 
 
@@ -252,8 +258,13 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ### Untuk menandakan bahwa Proxy Server ini adalah Proxy yang dibuat oleh Anri, Bu Meguri meminta Anri untuk mengubah error page default squid menjadi seperti berikut: 
 ![testestes](/Screenshot/soal11.jpg)
 ### (Note : File error page bisa diunduh dengan cara wget 10.151.36.202/ERR_ACCESS_DENIED Tidak perlu di extract, cukup cp -r)
-![testestes](/Screenshot/11-0.png)
+- Download file error page dengan perintah ```wget 10.151.36.202/ERR_ACCESS_DENIED``` pada direktori ```/usr/share/squid/errors/en``` maka akan tersimpan di ***ERR_ACCESS_DENIED.1*** 
+- Hapus file ***ERR_ACCESS_DENIED*** yang ada dengan perintah ```rm ERR_ACCESS_DENIED```
+- Menggunakan perintah ```mv ERR_ACCESS_DENIED.1 ERR_ACCESS_DENIED``` untuk memindahkan file page error ke ***ERR_ACCESS_DENIED***
+- Lakukan restart squid3 dengan perintah ```service squid3 restart```
 ![testestes](/Screenshot/11-1.png)
+
+- Akses ```its.ac.id``` maka hasilnya: 
 ![testestes](/Screenshot/11-2.png)
 </br></br></br>
 
@@ -265,7 +276,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 - Edit file konfigurasi dengan perintah ```nano /etc/bind/named.conf.local``` seperti gambar:
 ![testestes](/Screenshot/12-1.png)
 
-- Buat folder **_jarkom_** dengan perintah ```mkdir /etc/bind/jarkom```
+- Buat folder ***jarkom*** dengan perintah ```mkdir /etc/bind/jarkom```
 - Copy file _db.local_ dengan perintah ```cp /etc/bind/db.local /etc/bind/jarkom/janganlupa-ta.b12.pw```
 - Buka file tersebut dan edit dengan perintah ```nano /etc/bind/jarkom/janganlupa-ta.b12.pw```
 - Edit seperti: </br>
