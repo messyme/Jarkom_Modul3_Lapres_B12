@@ -201,21 +201,49 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 <a name="8"></a>
 ## SOAL NO 8
 ### Anri sudah menjadwal pengerjaan TA-nya, setiap hari Selasa-Rabu pukul 13.00-18.00. Bu Meguri membatasi penggunaan internet Anri hanya pada jadwal yang telah ditentukan itu saja. Maka diluar jam tersebut, Anri tidak dapat mengakses jaringan internet dengan proxy tersebut. Jadwal bimbingan dengan Bu Meguri adalah
-![testestes](/Screenshot/8-1.png)
+<!--![testestes](/Screenshot/8-1.png)-->
+- Pada UML **MOJOKERTO** buka file konfigurasi dengan perintah ```nano /etc/squid/squid.conf``` untuk menambahkan:
+  ```
+  acl WAKTU_TA time TW 13:00-18:00
+  http_access allow WAKTU_TA
+  ```
+  ![testestes](/Screenshot/9-1.png)
 </br></br></br>
 
 
 <a name="9"></a>
 ## SOAL NO 9
 ###  setiap hari Selasa-Kamis pukul 21.00 - 09.00 keesokan harinya (sampai Jumat jam 09.00). Agar Anri bisa fokus mengerjakan TA, 
-![testestes](/Screenshot/9-1.png)
+<!--![testestes](/Screenshot/9-1.png)-->
+- Pada UML **MOJOKERTO** buka file konfigurasi dengan perintah ```nano /etc/squid/squid.conf``` untuk menambahkan:
+  ```
+  acl WAKTU_TA time TW 13:00-18:00
+  acl WAKTU_BIMBINGAN_1 time TWH 21:00-23:59
+  acl WAKTU_BIMBINGAN_1 time TWH 21:00-23:59
+  
+  http_access allow USERS WAKTU_TA
+  http_access allow USERS WAKTU_BIMBINGAN_1
+  http_access allow WAKTU_BIMBINGAN_1
+  ```
+  ![testestes](/Screenshot/10-1.png)
 </br></br></br>
 
 
 <a name="10"></a>
 ## SOAL NO 10
 ###  setiap dia mengakses google.com, maka akan di redirect menuju monta.if.its.ac.id agar Anri selalu ingat untuk mengerjakan TA🙂
-![testestes](/Screenshot/10-1.png)
+<!--![testestes](/Screenshot/10-1.png)-->
+- Pada UML **MOJOKERTO** buka file konfigurasi dengan perintah ```nano /etc/squid/squid.conf``` untuk menambahkan:
+  ```
+  acl google-site dstdomain .google.com
+  deny_info http://monta.if.its.ac.id all
+  
+  http_reply_access deny google-site all
+  
+  http_access allow USERS 
+  http_access allow deny all
+  ```
+![testestes](/Screenshot/8-1.png)
 </br></br></br>
 
 
