@@ -131,11 +131,11 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 <a name="5"></a>
 ## SOAL NO 5
 ### Client mendapatkan DNS Malang dan DNS 202.46.129.2 dari DHCP
-- - Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
+- Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
 - Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file tambahkan ```option domain-name-servers 10.151.83.106, 202.46.129.2```
 ![testestes](/Screenshot/4-1.png)
 
-- Periksa pada UML **SIDOARJO** apakah DNS server sudah sesuai konfigurasi dengan menggunakan perintah ```cat /etc/resolv.conf```
+- Periksa pada UML **SIDOARJO** apakah DNS server sudah sesuai konfigurasi dengan menggunakan perintah ```cat /etc/resolv.conf```</br>
 ![testestes](/Screenshot/5-1.png)
 </br></br></br>
 
@@ -155,7 +155,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
       default-lease-time 600;
       max-lease-time 600;
       ```
-![testestes](/Screenshot/4-1.png)
+  ![testestes](/Screenshot/4-1.png)
 
 - Pada UML **SIDOARJO** lakukan perintah ```service networking restart``` untuk merestart network
 ![testestes](/Screenshot/6-1.png)
@@ -168,8 +168,32 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 <a name="7"></a>
 ## SOAL NO 7
 ### Pertama, akses ke proxy hanya bisa dilakukan oleh Anri sendiri sebagai user TA. User autentikasi milik Anri memiliki format: User : userta_b12, Password : inipassw0rdta_b12
-![testestes](/Screenshot/7-1.png)
+- Pada UML **MOJOKERTO** install squid dengan perintah ```apt-get install squid```
+- Pada konfigurasi ```nano /etc/squid3/squid.conf``` tambahkan
+  ```
+  http_port 8080
+  visible_hostname mojokerto
+  ```
+  ![testestes](/Screenshot/7-1.png)
+- Lalukan restart squid3 dengan perintah ```service squid3 restart```
+- Atur proxy browser pada device
+
+- Pada UML **MOJOKERTO** install apache2-utils dengan perintah ```pt-get install apache2-utils```
+- Dengan perintah ```htpasswd -c /etc/squid/passwd userta_a05``` membuat user dan password.
 ![testestes](/Screenshot/7-2.png)
+
+- Buka file konfigurasi dengan perintah ```nano /etc/squid/squid.conf``` untuk menambahkan
+  ```
+  auth_param basic program /usr/lib/squid/ncsa_auth /etc/squid/passwd
+  auth_param basic children 5
+  auth_param basic realm Proxy
+  auth_param basic credentialsttl 2 hours
+  auth_param basic casesensitive on
+  acl USERS proxy_auth REQUIRED
+  http_access allow USERS
+  ```
+
+- Lakukan restart squid3 dengan perintah ```service squid3 restart```, maka saat diakses akan muncul autentikasi seperti:
 ![testestes](/Screenshot/7-3.png)
 </br></br></br>
 
