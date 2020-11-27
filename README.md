@@ -132,8 +132,8 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ## SOAL NO 5
 ### Client mendapatkan DNS Malang dan DNS 202.46.129.2 dari DHCP
 - Pada UML **TUBAN** edit file ```nano /etc/default/isc-dhcp-server``` pada interface diisi ```eth0```
-- Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file tambahkan ```option domain-name-servers 10.151.83.106, 202.46.129.2```
-![testestes](/Screenshot/4-1.png)
+- Buka file konfigurasi DHCP dengan perintah ```nano /etc/dhcp/dhcpd.conf``` dan edit file tambahkan ```option domain-name-servers 10.151.83.106, 202.46.129.2```</br>
+  ![testestes](/Screenshot/4-1.png)
 
 - Periksa pada UML **SIDOARJO** apakah DNS server sudah sesuai konfigurasi dengan menggunakan perintah ```cat /etc/resolv.conf```</br>
 ![testestes](/Screenshot/5-1.png)
@@ -179,7 +179,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 - Atur proxy browser pada device
 
 - Pada UML **MOJOKERTO** install apache2-utils dengan perintah ```pt-get install apache2-utils```
-- Dengan perintah ```htpasswd -c /etc/squid/passwd userta_a05``` membuat user dan password.
+- Dengan perintah ```htpasswd -c /etc/squid/passwd userta_b12``` membuat user dan password.
 ![testestes](/Screenshot/7-2.png)
 
 - Buka file konfigurasi dengan perintah ```nano /etc/squid/squid.conf``` untuk menambahkan
