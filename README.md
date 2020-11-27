@@ -219,11 +219,11 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
   ```
   acl WAKTU_TA time TW 13:00-18:00
   acl WAKTU_BIMBINGAN_1 time TWH 21:00-23:59
-  acl WAKTU_BIMBINGAN_1 time TWH 21:00-23:59
+  acl WAKTU_BIMBINGAN_2 time WHF 00:00-09:00
   
   http_access allow USERS WAKTU_TA
   http_access allow USERS WAKTU_BIMBINGAN_1
-  http_access allow WAKTU_BIMBINGAN_1
+  http_access allow WAKTU_BIMBINGAN_2
   ```
   ![testestes](/Screenshot/10-1.png)
 </br></br></br>
@@ -243,7 +243,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
   http_access allow USERS 
   http_access allow deny all
   ```
-![testestes](/Screenshot/8-1.png)
+  ![testestes](/Screenshot/8-1.png)
 </br></br></br>
 
 
@@ -254,7 +254,7 @@ export ftp_proxy=”http://DPTSI-apa-apa:passVPN@proxy.its.ac.id:8080”
 ### (Note : File error page bisa diunduh dengan cara wget 10.151.36.202/ERR_ACCESS_DENIED Tidak perlu di extract, cukup cp -r)
 ![testestes](/Screenshot/11-0.png)
 ![testestes](/Screenshot/11-1.png)
-![testestes](/Screenshot/11-1.png)
+![testestes](/Screenshot/11-2.png)
 </br></br></br>
 
 
